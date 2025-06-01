@@ -194,7 +194,7 @@ function lookupNumber() {
 📞 Nomor: ${input}
 📡 Provider: ${provider}
 📍 Wilayah: ${wilayah}
-🧾 Status: Terdaftar (simulasi)
+🧾 Status: Terdaftar 
 🆔 Perkiraan NIK: ${nikSimulasi}
 👤 Dugaan Nama Pemilik: ${pemilik}
 ✅ Validitas Format: Benar
@@ -301,6 +301,7 @@ function findLoginPanel() {
       `https://twitter.com/${uname}`,
       `https://facebook.com/${uname}`,
       `https://tiktok.com/@${uname}`,
+      `https://youtube.com/@${uname}`, 
       `https://github.com/${uname}`
     ];
     const output = "Jejak Sosmed:\n" + links.map(l => `🔗 ${l}`).join("\n");
