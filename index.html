@@ -37,14 +37,6 @@
   <div class="output" id="lookupResult">Masukkan nomor HP di atas untuk melihat info OSINT.</div>
 </section>
 
-<div class="tool">
-  <h2>🛡️ JavaScript Obfuscator</h2>
-  <textarea id="jsInput" rows="6" placeholder="Tempelkan kode JavaScript..."></textarea>
-  <button onclick="obfuscateJS()">Obfuscate</button>
-  <pre id="jsOutput" class="result"></pre>
-  <button onclick="copyObfuscated()">📋 Salin Hasil</button>
-</div>
-
   <section id="dork">
   <h3>🕵️ Google Dorking</h3>
   <input type="text" id="dorkInput" placeholder='Contoh: site:go.id inurl:login'>
@@ -85,7 +77,14 @@
     <input type="text" id="usernameInput" placeholder="Username (tanpa @)">
     <button onclick="lookupSosmed()">Cari Jejak</button>
     <div class="output" id="sosmedResult"></div>
-  </section>
+   </section>
+   
+  <div class="tool">
+  <h2>🛡️ JavaScript Obfuscator</h2>
+  <textarea id="jsInput" rows="6" placeholder="Tempelkan kode JavaScript..."></textarea>
+  <button onclick="obfuscateJS()">Obfuscate</button>
+  <pre id="jsOutput" class="result"></pre>
+  <button onclick="copyObfuscated()">📋 Salin Hasil</button>
 </div>
 
 <script>
