@@ -13,7 +13,7 @@
       <h1>🕵️ OSINT AI Assistant</h1>
       <p>Alat investigasi cerdas untuk data publik & keamanan digital</p>
     </header>
-
+    
     <main>
     <section id="ip" class="active">
     <h3>🌐 IP Lookup (Sendiri)</h3>
@@ -35,6 +35,14 @@
   <button onclick="lookupNumber()">Cek Nomor</button>
   <div class="output" id="lookupResult">Masukkan nomor HP di atas untuk melihat info OSINT.</div>
 </section>
+
+<div class="tool">
+  <h2>🛡️ JavaScript Obfuscator</h2>
+  <textarea id="jsInput" rows="6" placeholder="Tempelkan kode JavaScript..."></textarea>
+  <button onclick="obfuscateJS()">Obfuscate</button>
+  <pre id="jsOutput" class="result"></pre>
+  <button onclick="copyObfuscated()">📋 Salin Hasil</button>
+</div>
 
   <section id="dork">
   <h3>🕵️ Google Dorking</h3>
@@ -194,7 +202,7 @@ function lookupNumber() {
 📞 Nomor: ${input}
 📡 Provider: ${provider}
 📍 Wilayah: ${wilayah}
-🧾 Status: Terdaftar 
+🧾 Status: Terdaftar (simulasi)
 🆔 Perkiraan NIK: ${nikSimulasi}
 👤 Dugaan Nama Pemilik: ${pemilik}
 ✅ Validitas Format: Benar
@@ -301,13 +309,34 @@ function findLoginPanel() {
       `https://twitter.com/${uname}`,
       `https://facebook.com/${uname}`,
       `https://tiktok.com/@${uname}`,
-      `https://youtube.com/@${uname}`, 
       `https://github.com/${uname}`
     ];
     const output = "Jejak Sosmed:\n" + links.map(l => `🔗 ${l}`).join("\n");
     document.getElementById("sosmedResult").textContent = output;
     window.lastResult = output;
   }
+
+function obfuscateJS() {
+  const code = document.getElementById("jsInput").value;
+  if (!code.trim()) {
+    document.getElementById("jsOutput").textContent = "⚠️ Masukkan kode JavaScript terlebih dahulu.";
+    return;
+  }
+
+  const obfuscated = JavaScriptObfuscator.obfuscate(code, {
+    compact: true,
+    controlFlowFlattening: true
+  });
+
+  document.getElementById("jsOutput").textContent = obfuscated.getObfuscatedCode();
+}
+
+function copyObfuscated() {
+  const output = document.getElementById("jsOutput").textContent;
+  navigator.clipboard.writeText(output).then(() => {
+    alert("✅ Hasil obfuscate disalin!");
+  });
+}
 
   function exportResults() {
     const blob = new Blob([window.lastResult || "Belum ada hasil OSINT."], {type: "text/plain"});
